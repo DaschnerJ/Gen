@@ -62,7 +62,11 @@ public class Utils {
 		File f = new File(System.getProperty("java.class.path"));
     	File dir2 = f.getAbsoluteFile().getParentFile();
     	String path2 = dir2.toString();
-    	return path2.split(";")[1];
+    	String[] split = path2.split(";");
+    	if(split.length > 1)
+    		return split[1];
+    	else
+    		return split[0];
 	}
 
 	public static void folderCreate(String path) {
