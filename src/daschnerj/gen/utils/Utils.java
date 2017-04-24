@@ -132,7 +132,13 @@ public class Utils {
     	URL url = Initialization.class.getResource(resourceName);
 		try {
 			File dir = new File(url.toURI());
-			String des = path2.split(";")[1]+path +"\\"+ dir.getName();
+			String[] preDir = path2.split(";");
+			
+			String des = path +"\\"+ dir.getName();
+			if(preDir.length > 1)
+				des = preDir[1] + des;
+			else
+				des = preDir[0];
 			File outDes = new File(des);
 			Files.copy(dir.toPath(),
 			        outDes.toPath(),
