@@ -33,33 +33,33 @@ will generate attributes for the object.
 A gwf file is a world save specific to Gen.
 
 ### Current To-Do List
--Loading Resources
--Saving Resources
--GUI/Menus
--Animations Strips
--Audio
--Defining Types
--World Generation
--Ability to Place/Destroy/Change Tile States
--World Loading
--World Saving
--World Transitioning
--Game Console/Debug
--Lighting
--AI/NPCS
--Particles/Effect Animations
--Event System
--Bug reporting/Error Handling
--Textures Clean Up
--Add to Steam
+- Loading Resources
+- Saving Resources
+- GUI/Menus
+- Animations Strips
+- Audio
+- Defining Types
+- World Generation
+- Ability to Place/Destroy/Change Tile States
+- World Loading
+- World Saving
+- World Transitioning
+- Game Console/Debug
+- Lighting
+- AI/NPCS
+- Particles/Effect Animations
+- Event System
+- Bug reporting/Error Handling
+- Textures Clean Up
+- Add to Steam 
 
 ### Working On
--Gen Installer
+- Gen Installer
 
 ### Done
--Rendering
--Movement
--Collision
+- Rendering
+- Movement
+- Collision
 
 
 
