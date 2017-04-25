@@ -61,6 +61,14 @@ A gwf file is a world save specific to Gen.
 - Movement
 - Collision
 
+### Libraries / API's / Set-Up
+- https://eclipse.org/
+- https://www.python.org/downloads/release/python-361/
+- https://www.python.org/downloads/release/python-353/
+- http://www.pydev.org/
+- http://www.objectaid.com/
+- http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+
 
 
 
