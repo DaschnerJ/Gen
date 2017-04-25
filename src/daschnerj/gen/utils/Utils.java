@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -47,14 +46,8 @@ public class Utils {
 	}
 
 	public static String getJarDirectory() {
-		try {
-			return new File(Utils.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath())
-					.getAbsolutePath();
-		} catch (URISyntaxException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
+		return new File(Utils.class.getProtectionDomain().getCodeSource().getLocation().getPath())
+				.getAbsolutePath();
 	}
 	
 	public static String getDirectory()
@@ -131,7 +124,7 @@ public class Utils {
     	String path2 = dir2.toString();
     	URL url = Initialization.class.getResource(resourceName);
 		try {
-			File dir = new File(url.toURI());
+			File dir = new File(url.getPath().replaceFirst("/", "").replaceAll("%20", " ").replaceFirst("file:",""));
 			String[] preDir = path2.split(";");
 			
 			String des = path +"\\"+ dir.getName();
@@ -143,7 +136,7 @@ public class Utils {
 			Files.copy(dir.toPath(),
 			        outDes.toPath(),
 			        StandardCopyOption.REPLACE_EXISTING);
-		} catch (URISyntaxException | IOException e) {
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
