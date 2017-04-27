@@ -12,7 +12,7 @@ public class GameState extends State {
 
 	public GameState(Handler handler) {
 		super(handler);
-		world = new World(handler, Utils.getDirectory() + "\\Worlds\\world1.txt");
+		world = new World(handler, Utils.getDirectory() + "\\Gen\\Worlds\\world1.txt");
 		handler.setWorld(world);
 
 	}
