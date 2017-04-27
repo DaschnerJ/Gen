@@ -1,4 +1,4 @@
-package daschnerj.gen;
+package daschnerj.gen.data;
 
 import java.awt.Font;
 import java.awt.image.BufferedImage;

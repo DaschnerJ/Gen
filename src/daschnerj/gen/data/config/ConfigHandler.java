@@ -3,7 +3,7 @@ package daschnerj.gen.data.config;
 import java.io.File;
 import java.util.ArrayList;
 
-import daschnerj.gen.DataObjects;
+import daschnerj.gen.data.DataObjects;
 import daschnerj.gen.utils.Utils;
 
 public class ConfigHandler {
