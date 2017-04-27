@@ -58,7 +58,10 @@ public class Initialization {
 
 	private void loadAssets() {
 		
+		System.out.println("Trying to run from: " + Utils.getDirectory()+ "\\Assets.jar");
+		
 		Utils.runJar(Utils.getDirectory()+ "\\Assets.jar");
+		
 		//Checks working directory.
 		//System.out.println("The Jar Directory is: " + Utils.getJarDirectory());
 		//Checks and creates these needed folders

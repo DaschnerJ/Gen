@@ -182,14 +182,16 @@ public class Utils {
     
     public static boolean runJar(String loc)
 	{
-		Process ps;
+    	ProcessBuilder builder = new ProcessBuilder("java", "-jar", loc);
 		try {
-			ps = Runtime.getRuntime().exec(new String[]{"java","-jar", loc});
+			Process ps = builder.start();
+			System.out.println("Running from: " + loc);
 			ps.waitFor();
-	        java.io.InputStream is=ps.getInputStream();
+			java.io.InputStream is=ps.getInputStream();
 	        byte b[]=new byte[is.available()];
 	        is.read(b,0,b.length);
-	        System.out.println(new String(b));
+	        System.out.println("Test: " + new String(b));
+	        is.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
