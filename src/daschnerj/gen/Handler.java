@@ -7,6 +7,9 @@ import daschnerj.gen.worlds.World;
 
 public class Handler {
 
+	/**
+	 * Handler contains basic functions to get and set values within the over all game.
+	 */
 	private Game game;
 	private World world;
 

@@ -1,22 +1,28 @@
-package daschnerj.gen.config;
+package daschnerj.gen.data.config;
 
 import java.io.File;
 import java.util.ArrayList;
 
+import daschnerj.gen.DataObjects;
 import daschnerj.gen.utils.Utils;
 
 public class ConfigHandler {
 	
-	private static ArrayList<Config> configList = new ArrayList<>();
-	
+	/**
+	 * Creates and handles all the configs as one unit.
+	 */
 	public ConfigHandler()
 	{
 		//System.out.println("Finding all config files in director "+Utils.getDirectory()+"\\gen"+"...");
 		refreshConfig();
-		System.out.println(configList.size()+" files were found.");
+		System.out.println(DataObjects.configs.size()+" files were found.");
 		
 	}
 	
+	/**
+	 * Find all files within the given path.
+	 * @param pathname The path to look for config files.
+	 */
 	private void findFile(String pathname) {
 	    File f = new File(pathname);
 	    File[] listfiles = f.listFiles();
@@ -29,7 +35,7 @@ public class ConfigHandler {
 	                if(hasExtension(internalFile[j], ".gcf"))
 	                {
 	                	//System.out.println(internalFile[j]);
-	                	configList.add(new Config(internalFile[j]));
+	                	DataObjects.configs.put(listfiles[i].getName(),new Config(internalFile[j]));
 	                }
 	                if (internalFile[j].isDirectory()) {
 	                    String name = internalFile[j].getAbsolutePath();
@@ -41,7 +47,7 @@ public class ConfigHandler {
 	        	if(hasExtension(listfiles[i], ".gcf"))
                 {
 	        		//System.out.println(listfiles[i]);
-                	configList.add(new Config(listfiles[i]));
+                	DataObjects.configs.put(listfiles[i].getName(),new Config(listfiles[i]));
                 }
 	        }
 
@@ -56,14 +62,14 @@ public class ConfigHandler {
 	
 	public void refreshConfig()
 	{
-		configList.clear();
+		DataObjects.configs.clear();
 		findFile(Utils.getDirectory()+"\\gen");
 	}
 	
 	public ArrayList<Config> findConfigsWithAttribute(String type, String attribute)
 	{
 		ArrayList<Config> typesMatch = new ArrayList<Config>();
-		for(Config c : configList)
+		for(Config c : DataObjects.configs.values())
 		{
 			if(c.getAttribute(type).equals(attribute))
 				typesMatch.add(c);

@@ -3,7 +3,7 @@ package daschnerj.gen;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
-import daschnerj.gen.config.ConfigHandler;
+import daschnerj.gen.data.config.ConfigHandler;
 import daschnerj.gen.display.Display;
 import daschnerj.gen.gfx.GameCamera;
 import daschnerj.gen.input.KeyManager;

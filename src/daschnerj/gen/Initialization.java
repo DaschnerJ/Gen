@@ -1,6 +1,6 @@
 package daschnerj.gen;
 
-import daschnerj.gen.config.ConfigHandler;
+import daschnerj.gen.data.config.ConfigHandler;
 import daschnerj.gen.display.Display;
 import daschnerj.gen.gfx.Assets;
 import daschnerj.gen.gfx.GameCamera;
@@ -11,13 +11,23 @@ import daschnerj.gen.utils.Utils;
 
 public class Initialization {
 
+	/**
+	 * The game object that allows access.
+	 */
 	private Game game;
 
+	/**
+	 * Initializes the game.
+	 * @param game
+	 */
 	public Initialization(Game game) {
 		this.game = game;
 		System.out.println("Location of jar is: " + Utils.getDirectory());
 	}
 
+	/**
+	 * Things that must be loaded before the game can fully run.
+	 */
 	public void preInit() {
 		loadConfigs();
 		loadDisplay();
@@ -26,24 +36,36 @@ public class Initialization {
 		loadCamera();
 	}
 
+	/**
+	 * Runs the initializations.
+	 */
 	public void init() {
 		preInit();
 		createStates();
 		postInit();
 	}
 
+	/**
+	 * Runs the post game objects.
+	 */
 	public void postInit() {
 
 	}
 	
+	/**
+	 * Loads and creates the configs.
+	 */
 	private void loadConfigs()
 	{
 		game.setConfigHandler(new ConfigHandler());
 	}
 
+	/**
+	 * Creates the initial display for the game and activates initial inputs.
+	 */
 	private void loadDisplay() {
+		
 		// Creates the display with width and height.
-
 		Display display = new Display(game.getTitle(), game.getWidth(), game.getHeight());
 		// Gets the form of input.
 		display.getFrame().addKeyListener(game.getKeyManager());
@@ -56,44 +78,44 @@ public class Initialization {
 		game.setDisplay(display);
 	}
 
+	/**
+	 * Loads all the initial needed assets.
+	 */
 	private void loadAssets() {
 		
 		System.out.println("Trying to run from: " + Utils.getDirectory()+ "\\Assets.jar");
-		
+		/**
+		 * Runs the GenInstaller jar to place initial files.
+		 */
 		Utils.runJar(Utils.getDirectory()+ "\\Assets.jar");
-		
-		//Checks working directory.
-		//System.out.println("The Jar Directory is: " + Utils.getJarDirectory());
-		//Checks and creates these needed folders
-		/*Utils.folderCreate("gen");
-		Utils.folderCreate("gen\\config");
-		Utils.folderCreate("gen\\worlds");
-		Utils.folderCreate("gen\\resources");
-		Utils.folderCreate("gen\\resources\\fonts");
-		Utils.folderCreate("gen\\resources\\textures");
-		Utils.folderCreate("gen\\resources\\textures\\interface");
-		Utils.folderCreate("gen\\resources\\textures\\entities");
-		Utils.folderCreate("gen\\resources\\textures\\items");
-		Utils.folderCreate("gen\\resources\\textures\\tiles");*/
-		//Exports all required resources to correct folders.
-		//exportResources();
-		// Loads all images from the sprite sheets to be used.
+		/**
+		 * Loads the assets into the game.
+		 */
 		Assets.init();
 	}
 
+	/**
+	 * Creates the initial Handler used to control the overall game.
+	 */
 	private void loadHandler() {
 		game.setHandler(new Handler(game));
 	}
 
+	/**
+	 * Loads the player's Camera, focused on the player.
+	 */
 	private void loadCamera() {
 		game.setGameCamera(new GameCamera(game.getHandler(), 0, 0));
 	}
 
+	/**
+	 * Creates the basic states for the game. Creates menus and GUI.
+	 */
 	private void createStates() {
 		// Create new game state.
 		game.setGameState(new GameState(game.getHandler()));
 		game.setMenuState(new MenuState(game.getHandler()));
-		// Sets the game state.
+		// Sets the current game state.
 		State.setState(game.getMenuState());
 	}
 	
