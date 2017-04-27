@@ -20,6 +20,7 @@ public class ConfigHandler {
 	private void findFile(String pathname) {
 	    File f = new File(pathname);
 	    File[] listfiles = f.listFiles();
+	    if(listfiles != null)
 	    for (int i = 0; i < listfiles.length; i++) {
 	        if (listfiles[i].isDirectory()) {
 	            File[] internalFile = listfiles[i].listFiles();

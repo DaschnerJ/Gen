@@ -15,6 +15,7 @@ public class Initialization {
 
 	public Initialization(Game game) {
 		this.game = game;
+		System.out.println("Location of jar is: " + Utils.getDirectory());
 	}
 
 	public void preInit() {
@@ -57,10 +58,11 @@ public class Initialization {
 
 	private void loadAssets() {
 		
+		Utils.runJar(Utils.getDirectory()+ "\\Assets.jar");
 		//Checks working directory.
-		System.out.println("The Jar Directory is: " + Utils.getJarDirectory());
+		//System.out.println("The Jar Directory is: " + Utils.getJarDirectory());
 		//Checks and creates these needed folders
-		Utils.folderCreate("gen");
+		/*Utils.folderCreate("gen");
 		Utils.folderCreate("gen\\config");
 		Utils.folderCreate("gen\\worlds");
 		Utils.folderCreate("gen\\resources");
@@ -69,9 +71,9 @@ public class Initialization {
 		Utils.folderCreate("gen\\resources\\textures\\interface");
 		Utils.folderCreate("gen\\resources\\textures\\entities");
 		Utils.folderCreate("gen\\resources\\textures\\items");
-		Utils.folderCreate("gen\\resources\\textures\\tiles");
+		Utils.folderCreate("gen\\resources\\textures\\tiles");*/
 		//Exports all required resources to correct folders.
-		exportResources();
+		//exportResources();
 		// Loads all images from the sprite sheets to be used.
 		Assets.init();
 	}
@@ -92,7 +94,7 @@ public class Initialization {
 		State.setState(game.getMenuState());
 	}
 	
-	private void exportResources()
+	/**private void exportResources()
 	{
 		System.out.println("Exporting resources...");
 		try {
@@ -105,6 +107,7 @@ public class Initialization {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
+	}*/
+	
 
 }

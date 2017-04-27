@@ -2,19 +2,12 @@ package daschnerj.gen.utils;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.util.List;
-
-import daschnerj.gen.Initialization;
 
 public class Utils {
 
@@ -83,13 +76,13 @@ public class Utils {
 		}
 	}
 	
-	/**
+	/*/**
      * Export a resource embedded into a Jar file to the local file path.
      *
      * @param resourceName ie.: "/SmartLibrary.dll"
      * @return The path to the exported resource
      * @throws Exception
-     */
+     *
     static public String ExportResource(String resourceName, String path) throws Exception {
         InputStream stream = null;
         OutputStream resStreamOut = null;
@@ -140,7 +133,7 @@ public class Utils {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    }
+    }*/
     
     /**
      * Loads a file in a List line by line.
@@ -186,6 +179,27 @@ public class Utils {
 		}
     	return lines;
     }
+    
+    public static boolean runJar(String loc)
+	{
+		Process ps;
+		try {
+			ps = Runtime.getRuntime().exec(new String[]{"java","-jar", loc});
+			ps.waitFor();
+	        java.io.InputStream is=ps.getInputStream();
+	        byte b[]=new byte[is.available()];
+	        is.read(b,0,b.length);
+	        System.out.println(new String(b));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return true;
+        
+	}
     
    
 

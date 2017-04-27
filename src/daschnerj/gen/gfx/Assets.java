@@ -17,10 +17,10 @@ public class Assets {
 	public static BufferedImage inventoryScreen;
 
 	public static void init() {
-		font28 = FontLoader.loadFont("gen\\resources\\fonts", "slkscr.ttf", 28);
-		SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("gen\\resources\\textures\\tiles", "sheet.png"));
+		font28 = FontLoader.loadFont("Gen\\Fonts", "slkscr.ttf", 28);
+		SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("Gen\\Textures", "sheet.png"));
 
-		inventoryScreen = ImageLoader.loadImage("gen\\resources\\textures\\interface", "inventoryScreen.png");
+		inventoryScreen = ImageLoader.loadImage("Gen\\Textures", "inventoryScreen.png");
 
 		wood = sheet.crop(width, height, width, height);
 
