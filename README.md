@@ -33,9 +33,6 @@ will generate attributes for the object.
 A gwf file is a world save specific to Gen.
 
 ### Current To-Do List
-- Loading Resources
-- Saving Resources
-- GUI/Menus
 - Animations Strips
 - Audio
 - Lighting
@@ -54,12 +51,15 @@ A gwf file is a world save specific to Gen.
 - Add to Steam 
 
 ### Working On
-- Gen Installer
+- Loading Resources (How to load and save world files/objects)
+- Saving Resources
+- GUI/Menus
 
 ### Done
 - Rendering
 - Movement
 - Collision
+- Gen Installer (Named Assets.jar)
 
 ### Libraries / API's / Set-Up
 - https://eclipse.org/
