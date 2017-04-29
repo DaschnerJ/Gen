@@ -3,11 +3,11 @@ package daschnerj.gen.worlds;
 import java.awt.Graphics;
 
 import daschnerj.gen.Handler;
+import daschnerj.gen.data.DataObjects;
 import daschnerj.gen.entities.EntityManager;
 import daschnerj.gen.entities.creatures.Player;
 import daschnerj.gen.entities.statics.Tree;
 import daschnerj.gen.items.ItemManager;
-import daschnerj.gen.loader.Lists;
 import daschnerj.gen.tile.Tile;
 import daschnerj.gen.utils.Utils;
 
@@ -70,7 +70,7 @@ public class World {
 	public Tile getTile(int x, int y) {
 		if (x < 0 || y < 0 || x >= width || y >= height)
 			return Tile.grassTile;
-		Tile t = Lists.tiles.get(tiles[x][y]);
+		Tile t = DataObjects.tiles.get(tiles[x][y]);
 		if (t == null)
 			return Tile.dirtTile;
 		return t;

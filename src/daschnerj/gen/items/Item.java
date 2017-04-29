@@ -5,8 +5,8 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import daschnerj.gen.Handler;
+import daschnerj.gen.data.DataObjects;
 import daschnerj.gen.gfx.Assets;
-import daschnerj.gen.loader.Lists;
 
 public class Item {
 
@@ -38,7 +38,7 @@ public class Item {
 
 		bounds = new Rectangle(x, y, ITEMWIDTH, ITEMHEIGHT);
 
-		Lists.items.put(id, this);
+		DataObjects.items.put(id, this);
 	}
 
 	public void tick() {

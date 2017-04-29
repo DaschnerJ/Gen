@@ -2,22 +2,17 @@ package daschnerj.gen.data.config;
 
 import java.io.File;
 import java.util.HashMap;
-import java.util.List;
 
-import daschnerj.gen.utils.Utils;
+import daschnerj.gen.data.files.Lines;
 
-public class Config {
+public class Config extends Lines{
 		
 	private HashMap<String, String> attributes = new HashMap<>();
 	
 	public Config(File file)
 	{
-		List<String> lines = Utils.readFile(file);
-		for(String s : lines)
-		{
-			String[] a = s.split(":");
-			attributes.put(a[0], a[1]);
-		}
+		super(file);
+		populateMap();
 		
 	}
 	
@@ -32,7 +27,7 @@ public class Config {
 	}
 	
 	/**
-	 * Allows programmatically set an attribute to the configuration file.
+	 * Allows programmatically set an attribute to the list, note it is not saved.
 	 * @param a The attribute desired to be added.
 	 * @param b The value for the desired attribute.
 	 */
@@ -40,6 +35,18 @@ public class Config {
 	{
 		attributes.put(a, b);
 	}
+	
+	private void populateMap()
+	{
+		attributes.clear();
+		for(String s : lines)
+		{
+			String pair[] = s.split(":");
+			attributes.put(pair[0], pair[1]);
+		}
+	}
+	
+	
 	
 
 }

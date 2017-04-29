@@ -3,7 +3,7 @@ package daschnerj.gen.tile;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
-import daschnerj.gen.loader.Lists;
+import daschnerj.gen.data.DataObjects;
 
 public class Tile {
 
@@ -25,7 +25,7 @@ public class Tile {
 		this.texture = texture;
 		this.id = id;
 
-		Lists.tiles.put(id, this);
+		DataObjects.tiles.put(id, this);
 	}
 
 	public void tick() {
