@@ -2,9 +2,13 @@ package daschnerj.gen.gfx;
 
 import java.awt.Font;
 import java.awt.image.BufferedImage;
+import java.io.File;
 
 import daschnerj.gen.data.Data;
 import daschnerj.gen.data.DataObjects;
+import daschnerj.gen.data.audio.GameAudio;
+import daschnerj.gen.data.audio.GameAudio.Sound;
+import daschnerj.gen.utils.Utils;
 
 public class Assets {
 
@@ -22,6 +26,51 @@ public class Assets {
 
 	public static void init() {
 		data = new Data();
+		File file = new File(Utils.getDirectory() + "\\Gen\\Audio\\windy.wav");
+		System.out.println("Exists: " + file.exists());
+		GameAudio audio = new GameAudio(file);
+		Sound sound = audio.playSound(1f, 0f, true);
+		new Thread()
+		{
+			boolean isRightward = true;
+			boolean isUpward = false;
+			public void run()
+			{
+				while(true)
+				{
+					try {
+						Thread.sleep(2);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					if(isRightward)
+					{
+						if(sound.getDirection() >= 1.0f)
+						{
+							isRightward = false;
+							sound.setDirection(sound.getDirection() + 0.0001f);
+						}
+						else
+						{
+							sound.setDirection(sound.getDirection() + 0.0001f);
+						}
+					}
+					else
+					{
+						if(sound.getDirection() <= -1.0f)
+						{
+							isRightward = true;
+							sound.setDirection(sound.getDirection() - 0.0001f);
+						}
+						else
+						{
+							sound.setDirection(sound.getDirection() - 0.0001f);
+						}
+					}
+				}
+			}
+		}.start();
+		
 		font28 = DataObjects.fonts.get("slkscr").loadFont(28);
 		SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("Gen\\Textures", "sheet.png"));
 
