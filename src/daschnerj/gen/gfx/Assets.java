@@ -3,10 +3,14 @@ package daschnerj.gen.gfx;
 import java.awt.Font;
 import java.awt.image.BufferedImage;
 
+import daschnerj.gen.data.Data;
+import daschnerj.gen.data.DataObjects;
+
 public class Assets {
 
 	private static final int width = 32, height = 32;
-
+	
+	public static Data data;
 	public static Font font28;
 
 	public static BufferedImage dirt, grass, stone, tree, rock;
@@ -17,7 +21,8 @@ public class Assets {
 	public static BufferedImage inventoryScreen;
 
 	public static void init() {
-		font28 = FontLoader.loadFont("Gen\\Fonts", "slkscr.ttf", 28);
+		data = new Data();
+		font28 = DataObjects.fonts.get("slkscr").loadFont(28);
 		SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("Gen\\Textures", "sheet.png"));
 
 		inventoryScreen = ImageLoader.loadImage("Gen\\Textures", "inventoryScreen.png");

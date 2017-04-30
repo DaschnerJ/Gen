@@ -12,7 +12,7 @@ import daschnerj.gen.data.LineFile;
 public class Lines implements LineFile {
 	
 	protected File file;
-	protected ArrayList<String> lines;
+	protected ArrayList<String> lines = new ArrayList<String>();
 	
 	public Lines(File file)
 	{
@@ -40,7 +40,8 @@ public class Lines implements LineFile {
 
 	@Override
 	public void readLines() {
-		lines.clear();
+		if(lines != null)
+			lines.clear();
 		// Open the file
 		FileInputStream fstream;
 		try {

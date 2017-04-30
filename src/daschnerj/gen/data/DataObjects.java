@@ -1,11 +1,12 @@
 package daschnerj.gen.data;
 
-import java.awt.Font;
 import java.io.File;
 import java.util.HashMap;
 
+import daschnerj.gen.data.audio.GameAudio;
 import daschnerj.gen.data.config.Config;
 import daschnerj.gen.data.files.Lines;
+import daschnerj.gen.data.fonts.GameFont;
 import daschnerj.gen.data.textures.Texture;
 import daschnerj.gen.entities.Entity;
 import daschnerj.gen.entities.creatures.Creature;
@@ -22,8 +23,9 @@ public class DataObjects {
 	public static HashMap<String, Texture> textures = new HashMap<String, Texture>();
 	public static HashMap<String, Config> configs = new HashMap<String, Config>();
 	public static HashMap<String, Level> worlds = new HashMap<String, Level>();
-	public static HashMap<String, Font> fonts = new HashMap<String, Font>();
 	public static HashMap<String, Lines> files = new HashMap<String, Lines>();
+	public static HashMap<String, GameAudio> sounds = new HashMap<String, GameAudio>();
+	public static HashMap<String, GameFont> fonts = new HashMap<String, GameFont>();
 	
 	
 	//Lists of Created Instances Game Objects
