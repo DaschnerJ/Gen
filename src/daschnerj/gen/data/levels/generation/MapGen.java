@@ -2,19 +2,14 @@ package daschnerj.gen.data.levels.generation;
 
 import java.awt.FlowLayout;
 import java.awt.image.BufferedImage;
-import java.util.Arrays;
 import java.util.Random;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import daschnerj.gen.data.levels.generation.noise.SimplexNoise;
+import daschnerj.gen.data.levels.generation.noise.Smooth;
 import daschnerj.gen.data.levels.generation.perlin.Noise;
-import daschnerj.gen.data.levels.generation.threes.FractalTerrain;
-import daschnerj.gen.data.levels.generation.threes.RGB;
-import daschnerj.gen.data.levels.generation.threes.Terrain;
-import daschnerj.gen.data.levels.generation.threes.Triple;
 
 public class MapGen {
 
@@ -34,19 +29,31 @@ public class MapGen {
 		n.initialise();
 		//n.printAsCSV();
 		int[][] a1 = n.getArray(h);
-		createImage(a1);
+		//createImage(a1);
 		Noise n2 = new Noise(rand, 10.0f, width, height);
 		n2.initialise();
 		//n.printAsCSV();
 		int[][] a2 = n2.getArray(h);
-		createImage(a2);
+		//createImage(a2);
 		int[][] a3 = addArrays(a1, a2);
-		createImage(a3);
+		//createImage(a3);
 		Noise n3 = new Noise(rand, 10.0f, width, height);
 		n3.initialise();
 		int[][] a4 = n3.getArray(h);
 		a4 = addArrays(a3, a4);
-		createImage(a3);
+		//createImage(a4);
+		Smooth sm = new Smooth(width, height);
+		sm.setArray(a4);
+		a4 = sm.smoothTiles();
+		sm.setArray(a4);
+		a4 = sm.smoothTiles();
+		sm.setArray(a4);
+		a4 = sm.smoothTiles();
+		sm.setArray(a4);
+		a4 = sm.smoothTiles();
+		sm.setArray(a4);
+		a4 = sm.smoothTiles();
+		createImage(a4);
 				
 		
 		

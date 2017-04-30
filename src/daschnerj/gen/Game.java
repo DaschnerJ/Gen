@@ -127,6 +127,7 @@ public class Game implements Runnable {
 		long lastTime = System.nanoTime();
 		// To see frame rate.
 		long timer = 0;
+		@SuppressWarnings("unused")
 		int ticks = 0;
 
 		while (running) {

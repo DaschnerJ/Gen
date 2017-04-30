@@ -16,4 +16,22 @@ public class Triangle {
 	    j[1] = j1;
 	    j[2] = j2;
 	  }
+	public RGB[] getRgb() {
+		return rgb;
+	}
+	public void setRgb(RGB[] rgb) {
+		this.rgb = rgb;
+	}
+	public Color getColor() {
+		return color;
+	}
+	public void setColor(Color color) {
+		this.color = color;
+	}
+	public Triple getN() {
+		return n;
+	}
+	public void setN(Triple n) {
+		this.n = n;
+	}
 	}

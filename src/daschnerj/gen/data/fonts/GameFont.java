@@ -34,5 +34,10 @@ public class GameFont {
 		}
 		return null;
 	}
+	
+	public String getName()
+	{
+		return name;
+	}
 
 }
