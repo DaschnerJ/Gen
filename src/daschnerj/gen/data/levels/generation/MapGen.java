@@ -23,7 +23,7 @@ public class MapGen {
 		System.out.println(SimplexNoise.p.length);*/
 		
 		//generateFractalTerrain();
-		int h = 700;
+		int h = 100;
 		Random rand = new Random();
 		Noise n = new Noise(rand, 10.0f, width, height);
 		n.initialise();
@@ -112,7 +112,7 @@ public class MapGen {
 	}**/
 
 	private void createImage(int[][] array) {
-		BufferedImage b = new BufferedImage(array.length, array[0].length, BufferedImage.TYPE_INT_ARGB);
+		BufferedImage b = new BufferedImage(array.length, array[0].length, BufferedImage.TYPE_INT_RGB);
 
 		for (int x = 0; x < array.length; x++) {
 			for (int y = 0; y < array[0].length; y++) {
