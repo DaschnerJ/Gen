@@ -1,4 +1,4 @@
-package daschnerj.gen.gfx.animation;
+package daschnerj.gen.data.textures;
 
 import java.awt.image.BufferedImage;
 
