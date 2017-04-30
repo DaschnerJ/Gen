@@ -9,7 +9,7 @@ public interface IData {
 	 * Gets all the required files for the game.
 	 * @return Returns the array list of files within the jar folder.
 	 */
-	public ArrayList<File> getAllFiles();
+	public ArrayList<File> getAllFiles(String path);
 	
 	/**
 	 * Sorts all the files in the proper data locations.
