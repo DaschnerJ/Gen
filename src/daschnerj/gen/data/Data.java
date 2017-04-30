@@ -3,12 +3,12 @@ package daschnerj.gen.data;
 import java.io.File;
 import java.util.ArrayList;
 
-import daschnerj.gen.data.audio.GameAudio;
 import daschnerj.gen.data.config.Config;
 import daschnerj.gen.data.files.Lines;
 import daschnerj.gen.data.fonts.GameFont;
+import daschnerj.gen.data.levels.Level;
+import daschnerj.gen.data.sounds.GameAudio;
 import daschnerj.gen.data.textures.Texture;
-import daschnerj.gen.level.Level;
 import daschnerj.gen.utils.Utils;
 
 public class Data implements IData {

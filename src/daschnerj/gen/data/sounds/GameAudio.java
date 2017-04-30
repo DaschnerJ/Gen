@@ -1,4 +1,4 @@
-package daschnerj.gen.data.audio;
+package daschnerj.gen.data.sounds;
 
 import java.io.File;
 import java.io.IOException;

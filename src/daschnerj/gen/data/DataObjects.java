@@ -3,16 +3,16 @@ package daschnerj.gen.data;
 import java.io.File;
 import java.util.HashMap;
 
-import daschnerj.gen.data.audio.GameAudio;
 import daschnerj.gen.data.config.Config;
 import daschnerj.gen.data.files.Lines;
 import daschnerj.gen.data.fonts.GameFont;
+import daschnerj.gen.data.levels.Level;
+import daschnerj.gen.data.sounds.GameAudio;
 import daschnerj.gen.data.textures.Texture;
 import daschnerj.gen.entities.Entity;
 import daschnerj.gen.entities.creatures.Creature;
 import daschnerj.gen.entities.statics.StaticEntity;
 import daschnerj.gen.items.Item;
-import daschnerj.gen.level.Level;
 import daschnerj.gen.tile.Tile;
 
 public class DataObjects {
