@@ -1,4 +1,4 @@
-package daschnerj.gen.data.levels.generation.noise;
+package daschnerj.gen.data.levels.generation.perlin;
 
 public class Smooth {
 	

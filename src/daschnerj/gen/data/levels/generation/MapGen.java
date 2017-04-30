@@ -8,8 +8,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import daschnerj.gen.data.levels.generation.noise.Smooth;
 import daschnerj.gen.data.levels.generation.perlin.Noise;
+import daschnerj.gen.data.levels.generation.perlin.Smooth;
 
 public class MapGen {
 
@@ -23,7 +23,7 @@ public class MapGen {
 		System.out.println(SimplexNoise.p.length);*/
 		
 		//generateFractalTerrain();
-		int h = 500;
+		int h = 700;
 		Random rand = new Random();
 		Noise n = new Noise(rand, 10.0f, width, height);
 		n.initialise();
