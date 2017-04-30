@@ -87,11 +87,11 @@ public class Noise {
         }
     }
     
-    public int[][] getArray() {
+    public int[][] getArray(int hardness) {
     	int[][] arr = new int[grid_.length][grid_[0].length];
         for(int i = 0;i < grid_.length;i++) {
             for(int j = 0;j < grid_[0].length;j++) {
-                arr[i][j] = (int)(100* grid_[i][j]);
+                arr[i][j] = (int)(hardness* grid_[i][j]);
             }
             //System.out.println();
         }
