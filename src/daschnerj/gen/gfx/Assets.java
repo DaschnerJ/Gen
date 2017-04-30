@@ -6,8 +6,8 @@ import java.io.File;
 
 import daschnerj.gen.data.Data;
 import daschnerj.gen.data.DataObjects;
-import daschnerj.gen.data.audio.GameAudio;
-import daschnerj.gen.data.audio.GameAudio.Sound;
+import daschnerj.gen.data.sounds.GameAudio;
+import daschnerj.gen.data.sounds.GameAudio.Sound;
 import daschnerj.gen.utils.Utils;
 
 public class Assets {
@@ -33,7 +33,6 @@ public class Assets {
 		new Thread()
 		{
 			boolean isRightward = true;
-			boolean isUpward = false;
 			public void run()
 			{
 				while(true)
