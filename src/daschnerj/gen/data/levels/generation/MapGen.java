@@ -41,18 +41,13 @@ public class MapGen {
 		n3.initialise();
 		int[][] a4 = n3.getArray(h);
 		a4 = addArrays(a3, a4);
-		//createImage(a4);
+		createImage(a4);
 		Smooth sm = new Smooth(width, height);
-		sm.setArray(a4);
-		a4 = sm.smoothTiles();
-		sm.setArray(a4);
-		a4 = sm.smoothTiles();
-		sm.setArray(a4);
-		a4 = sm.smoothTiles();
-		sm.setArray(a4);
-		a4 = sm.smoothTiles();
-		sm.setArray(a4);
-		a4 = sm.smoothTiles();
+		for(int i = 0; i < 100; i++)
+		{
+			sm.setArray(a4);
+			a4 = sm.smoothTiles();
+		}
 		createImage(a4);
 				
 		
