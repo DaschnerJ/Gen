@@ -7,7 +7,8 @@ import java.io.File;
 import daschnerj.gen.data.Data;
 import daschnerj.gen.data.DataObjects;
 import daschnerj.gen.data.sounds.GameAudio;
-import daschnerj.gen.data.sounds.GameAudio.Sound;
+import daschnerj.gen.data.sounds.GameAudio.LocationSound;
+import daschnerj.gen.data.sounds.SoundVector;
 import daschnerj.gen.utils.Utils;
 
 public class Assets {
@@ -29,9 +30,10 @@ public class Assets {
 		File file = new File(Utils.getDirectory() + "\\Gen\\Audio\\windy.wav");
 		System.out.println("Exists: " + file.exists());
 		GameAudio audio = new GameAudio(file);
-		Sound sound = audio.playSound(1f, 0f, true);
+		LocationSound sound = audio.playLocationSound(1f, 0f, true, new SoundVector(0,0.5f), new SoundVector(0,0), 1);
 		new Thread()
 		{
+			float x;
 			boolean isRightward = true;
 			public void run()
 			{
@@ -44,28 +46,30 @@ public class Assets {
 					}
 					if(isRightward)
 					{
-						if(sound.getDirection() >= 1.0f)
+						if(x >= 1.0f)
 						{
 							isRightward = false;
-							sound.setDirection(sound.getDirection() + 0.0001f);
+							x += 0.0001f;
 						}
 						else
 						{
-							sound.setDirection(sound.getDirection() + 0.0001f);
+							x += 0.0001f;
 						}
 					}
 					else
 					{
-						if(sound.getDirection() <= -1.0f)
+						if(x <= -1.0f)
 						{
 							isRightward = true;
-							sound.setDirection(sound.getDirection() - 0.0001f);
+							x -= 0.0001f;
 						}
 						else
 						{
-							sound.setDirection(sound.getDirection() - 0.0001f);
+							x -= 0.0001f;
 						}
 					}
+					sound.setLocation(new SoundVector(x,0.5f));
+					sound.adjustSoundToListener(new SoundVector(0,0));
 				}
 			}
 		}.start();
