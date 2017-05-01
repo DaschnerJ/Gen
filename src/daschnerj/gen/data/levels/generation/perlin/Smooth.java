@@ -14,9 +14,9 @@ public class Smooth {
 	
 	public int[][] smoothTiles()
 	{
-		for(int i = 0; i < height; i++)
+		for(int i = 0; i < width; i++)
 		{
-			for(int j = 0; j < width; j++)
+			for(int j = 0; j < height; j++)
 			{
 				temp[i][j] = getValueAverage(i, j);
 			}
@@ -43,7 +43,7 @@ public class Smooth {
 			{
 				if(x == 0 && y == 0)
 					continue;
-				if(x+i < 0 || y+j < 0 || x+i >= height || y+j >= width)
+				if(x+i < 0 || y+j < 0 || x+i >= width || y+j >= height)
 					continue;
 				value = value + arr[x+i][y+j];
 				count++;
