@@ -4,7 +4,7 @@ import daschnerj.gen.gfx.Assets;
 
 public class GrassTile extends Tile {
 
-	public GrassTile(String id) {
+	public GrassTile(final String id) {
 		super(Assets.grass, id);
 	}
 

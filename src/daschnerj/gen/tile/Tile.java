@@ -21,27 +21,27 @@ public class Tile {
 	protected BufferedImage texture;
 	protected final String id;
 
-	public Tile(BufferedImage texture, String id) {
+	public Tile(final BufferedImage texture, final String id) {
 		this.texture = texture;
 		this.id = id;
 
 		DataObjects.tiles.put(id, this);
 	}
 
-	public void tick() {
-
-	}
-
-	public void render(Graphics g, int x, int y) {
-		g.drawImage(texture, x, y, TILEWIDTH, TILEHEIGHT, null);
+	public String getId() {
+		return id;
 	}
 
 	public boolean isSolid() {
 		return false;
 	}
 
-	public String getId() {
-		return id;
+	public void render(final Graphics g, final int x, final int y) {
+		g.drawImage(texture, x, y, TILEWIDTH, TILEHEIGHT, null);
+	}
+
+	public void tick() {
+
 	}
 
 }

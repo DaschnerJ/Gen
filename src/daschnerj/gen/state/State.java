@@ -9,26 +9,26 @@ public abstract class State {
 	// Current state.
 	private static State currentState = null;
 
-	// Changes the state.
-	public static void setState(State state) {
-		currentState = state;
-	}
-
 	// Gets the current state.
 	public static State getState() {
 		return currentState;
+	}
+
+	// Changes the state.
+	public static void setState(final State state) {
+		currentState = state;
 	}
 
 	// CLASS
 
 	protected Handler handler;
 
-	public State(Handler handler) {
+	public State(final Handler handler) {
 		this.handler = handler;
 	}
 
-	public abstract void tick();
-
 	public abstract void render(Graphics g);
+
+	public abstract void tick();
 
 }

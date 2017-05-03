@@ -4,7 +4,7 @@ import daschnerj.gen.gfx.Assets;
 
 public class DirtTile extends Tile {
 
-	public DirtTile(String id) {
+	public DirtTile(final String id) {
 		super(Assets.dirt, id);
 	}
 

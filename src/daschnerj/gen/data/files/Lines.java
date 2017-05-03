@@ -10,12 +10,11 @@ import java.util.ArrayList;
 import daschnerj.gen.data.LineFile;
 
 public class Lines implements LineFile {
-	
+
 	protected File file;
-	protected ArrayList<String> lines = new ArrayList<String>();
-	
-	public Lines(File file)
-	{
+	protected ArrayList<String> lines = new ArrayList<>();
+
+	public Lines(final File file) {
 		this.file = file;
 		readLines();
 	}
@@ -33,35 +32,36 @@ public class Lines implements LineFile {
 	}
 
 	@Override
-	public void setFile(File file) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void readLines() {
-		if(lines != null)
+		if (lines != null) {
 			lines.clear();
+		}
 		// Open the file
 		FileInputStream fstream;
 		try {
 			fstream = new FileInputStream(file);
-			BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
+			final BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
 
 			String strLine;
 
-			//Read File Line By Line
-			while ((strLine = br.readLine()) != null)   {
-			  // Print the content on the console
-			  lines.add(strLine);
+			// Read File Line By Line
+			while ((strLine = br.readLine()) != null) {
+				// Print the content on the console
+				lines.add(strLine);
 			}
 
-			//Close the input stream
+			// Close the input stream
 			br.close();
-		} catch (IOException e) {
+		} catch (final IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public void setFile(final File file) {
+		// TODO Auto-generated method stub
+
 	}
 
 }

@@ -11,7 +11,7 @@ import daschnerj.gen.input.MouseManager;
 import daschnerj.gen.state.State;
 
 public class Game implements Runnable {
-	
+
 	private ConfigHandler configHandler;
 
 	// The display on the game frame.
@@ -48,7 +48,7 @@ public class Game implements Runnable {
 	// Handler
 	private Handler handler;
 
-	public Game(String title, int width, int height) {
+	public Game(final String title, final int width, final int height) {
 		this.width = width;
 		this.height = height;
 		this.title = title;
@@ -57,23 +57,77 @@ public class Game implements Runnable {
 
 	}
 
+	public BufferStrategy getBs() {
+		return bs;
+	}
+
+	public ConfigHandler getConfigHandler() {
+		return configHandler;
+	}
+
+	public Display getDisplay() {
+		return display;
+	}
+
+	public Graphics getG() {
+		return g;
+	}
+
+	public GameCamera getGameCamera() {
+		return gameCamera;
+	}
+
+	public State getGameState() {
+		return gameState;
+	}
+
+	public Handler getHandler() {
+		return handler;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	/**
+	 * Gets the key manager.
+	 *
+	 * @return KeyManager
+	 */
+	public KeyManager getKeyManager() {
+		return keyManager;
+	}
+
+	public State getMenuState() {
+		return menuState;
+	}
+
+	public MouseManager getMouseManager() {
+		return mouseManager;
+	}
+
+	public Thread getThread() {
+		return thread;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public int getWidth() {
+		return width;
+	}
+
 	// Initial initialization of the game.
 	private void init() {
 
-		Initialization ini = new Initialization(this);
+		final Initialization ini = new Initialization(this);
 		ini.init();
-		
+
 	}
 
-	// Updates the game.
-	private void tick() {
-		// Ticks and obtains player inputs.
-		keyManager.tick();
-
-		// Checks if the state is not null to make sure the game can tick.
-		if (State.getState() != null) {
-			State.getState().tick();
-		}
+	public boolean isRunning() {
+		return running;
 	}
 
 	// Renders the game, draws to the screen.
@@ -115,13 +169,14 @@ public class Game implements Runnable {
 	}
 
 	// The run method of the game thread.
+	@Override
 	public void run() {
 		init();
 
 		// To limit the frames rate of the game to make it even among all
 		// computers.
-		int fps = 60;
-		double timePerTick = 1000000000 / fps;
+		final int fps = 60;
+		final double timePerTick = 1000000000 / fps;
 		double delta = 0;
 		long now;
 		long lastTime = System.nanoTime();
@@ -151,7 +206,7 @@ public class Game implements Runnable {
 			}
 
 			if (timer >= 1000000000) {
-				//System.out.println("Ticks and Frames: " + ticks);
+				// System.out.println("Ticks and Frames: " + ticks);
 				ticks = 0;
 				timer = 0;
 			}
@@ -160,129 +215,64 @@ public class Game implements Runnable {
 		stop();
 	}
 
-	/**
-	 * Gets the key manager.
-	 * 
-	 * @return KeyManager
-	 */
-	public KeyManager getKeyManager() {
-		return keyManager;
-	}
-
-	public MouseManager getMouseManager() {
-		return mouseManager;
-	}
-
-	public GameCamera getGameCamera() {
-		return gameCamera;
-	}
-
-	public int getWidth() {
-		return width;
-	}
-
-	public void setWidth(int width) {
-		this.width = width;
-	}
-
-	public int getHeight() {
-		return height;
-	}
-
-	public void setHeight(int height) {
-		this.height = height;
-	}
-
-	public State getGameState() {
-		return gameState;
-	}
-
-	public void setGameState(State gameState) {
-		this.gameState = gameState;
-	}
-
-	public Display getDisplay() {
-		return display;
-	}
-
-	public void setDisplay(Display display) {
-		this.display = display;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public boolean isRunning() {
-		return running;
-	}
-
-	public void setRunning(boolean running) {
-		this.running = running;
-	}
-
-	public Thread getThread() {
-		return thread;
-	}
-
-	public void setThread(Thread thread) {
-		this.thread = thread;
-	}
-
-	public BufferStrategy getBs() {
-		return bs;
-	}
-
-	public void setBs(BufferStrategy bs) {
+	public void setBs(final BufferStrategy bs) {
 		this.bs = bs;
 	}
 
-	public Graphics getG() {
-		return g;
+	public void setConfigHandler(final ConfigHandler configHandler) {
+		this.configHandler = configHandler;
 	}
 
-	public void setG(Graphics g) {
+	public void setDisplay(final Display display) {
+		this.display = display;
+	}
+
+	public void setG(final Graphics g) {
 		this.g = g;
 	}
 
-	public State getMenuState() {
-		return menuState;
-	}
-
-	public void setMenuState(State menuState) {
-		this.menuState = menuState;
-	}
-
-	public Handler getHandler() {
-		return handler;
-	}
-
-	public void setHandler(Handler handler) {
-		this.handler = handler;
-	}
-
-	public void setKeyManager(KeyManager keyManager) {
-		this.keyManager = keyManager;
-	}
-
-	public void setMouseManager(MouseManager mouseManager) {
-		this.mouseManager = mouseManager;
-	}
-
-	public void setGameCamera(GameCamera gameCamera) {
+	public void setGameCamera(final GameCamera gameCamera) {
 		this.gameCamera = gameCamera;
 	}
 
-	public ConfigHandler getConfigHandler() {
-		return configHandler;
+	public void setGameState(final State gameState) {
+		this.gameState = gameState;
 	}
 
-	public void setConfigHandler(ConfigHandler configHandler) {
-		this.configHandler = configHandler;
+	public void setHandler(final Handler handler) {
+		this.handler = handler;
+	}
+
+	public void setHeight(final int height) {
+		this.height = height;
+	}
+
+	public void setKeyManager(final KeyManager keyManager) {
+		this.keyManager = keyManager;
+	}
+
+	public void setMenuState(final State menuState) {
+		this.menuState = menuState;
+	}
+
+	public void setMouseManager(final MouseManager mouseManager) {
+		this.mouseManager = mouseManager;
+	}
+
+	public void setRunning(final boolean running) {
+		this.running = running;
+	}
+
+	public void setThread(final Thread thread) {
+		this.thread = thread;
+	}
+
+	public void setTitle(final String title) {
+		this.title = title;
+	}
+
+	public void setWidth(final int width) {
+		this.width = width;
 	}
 
 	// Start the game thread.
@@ -316,8 +306,19 @@ public class Game implements Runnable {
 		try {
 			// Stops the game thread.
 			thread.join();
-		} catch (InterruptedException e) {
+		} catch (final InterruptedException e) {
 			e.printStackTrace();
+		}
+	}
+
+	// Updates the game.
+	private void tick() {
+		// Ticks and obtains player inputs.
+		keyManager.tick();
+
+		// Checks if the state is not null to make sure the game can tick.
+		if (State.getState() != null) {
+			State.getState().tick();
 		}
 	}
 

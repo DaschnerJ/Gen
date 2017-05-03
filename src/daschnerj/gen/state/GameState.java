@@ -8,9 +8,9 @@ import daschnerj.gen.worlds.World;
 
 public class GameState extends State {
 
-	private World world;
+	private final World world;
 
-	public GameState(Handler handler) {
+	public GameState(final Handler handler) {
 		super(handler);
 		world = new World(handler, Utils.getDirectory() + "\\Gen\\Worlds\\world1.txt");
 		handler.setWorld(world);
@@ -18,13 +18,13 @@ public class GameState extends State {
 	}
 
 	@Override
-	public void tick() {
-		world.tick();
+	public void render(final Graphics g) {
+		world.render(g);
 	}
 
 	@Override
-	public void render(Graphics g) {
-		world.render(g);
+	public void tick() {
+		world.tick();
 	}
 
 }

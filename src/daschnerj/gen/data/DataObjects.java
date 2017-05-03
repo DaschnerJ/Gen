@@ -16,27 +16,25 @@ import daschnerj.gen.items.Item;
 import daschnerj.gen.tile.Tile;
 
 public class DataObjects {
-	
-	public static HashMap<String, File> bin = new HashMap<String, File>();
-	
-	//Base Files
-	public static HashMap<String, Texture> textures = new HashMap<String, Texture>();
-	public static HashMap<String, Config> configs = new HashMap<String, Config>();
-	public static HashMap<String, Level> worlds = new HashMap<String, Level>();
-	public static HashMap<String, Lines> files = new HashMap<String, Lines>();
-	public static HashMap<String, GameAudio> sounds = new HashMap<String, GameAudio>();
-	public static HashMap<String, GameFont> fonts = new HashMap<String, GameFont>();
-	
-	
-	//Lists of Created Instances Game Objects
+
+	public static HashMap<String, File> bin = new HashMap<>();
+
+	// Base Files
+	public static HashMap<String, Texture> textures = new HashMap<>();
+	public static HashMap<String, Config> configs = new HashMap<>();
+	public static HashMap<String, Level> worlds = new HashMap<>();
+	public static HashMap<String, Lines> files = new HashMap<>();
+	public static HashMap<String, GameAudio> sounds = new HashMap<>();
+	public static HashMap<String, GameFont> fonts = new HashMap<>();
+
+	// Lists of Created Instances Game Objects
 	public static HashMap<String, Tile> tiles = new HashMap<>();
-	
+
 	public static HashMap<String, Entity> entities = new HashMap<>();
-	
+
 	public static HashMap<String, StaticEntity> staticEntities = new HashMap<>();
 	public static HashMap<String, Item> items = new HashMap<>();
-	
+
 	public static HashMap<String, Creature> creatures = new HashMap<>();
-	
 
 }

@@ -11,27 +11,12 @@ public class ItemManager {
 	private Handler handler;
 	private ArrayList<Item> items;
 
-	public ItemManager(Handler handler) {
+	public ItemManager(final Handler handler) {
 		this.handler = handler;
-		items = new ArrayList<Item>();
+		items = new ArrayList<>();
 	}
 
-	public void tick() {
-		Iterator<Item> it = items.iterator();
-		while (it.hasNext()) {
-			Item i = it.next();
-			i.tick();
-			if (i.isPickedUp())
-				it.remove();
-		}
-	}
-
-	public void render(Graphics g) {
-		for (Item i : items)
-			i.render(g);
-	}
-
-	public void addIem(Item i) {
+	public void addIem(final Item i) {
 		i.setHandler(handler);
 		items.add(i);
 	}
@@ -40,16 +25,33 @@ public class ItemManager {
 		return handler;
 	}
 
-	public void setHandler(Handler handler) {
-		this.handler = handler;
-	}
-
 	public ArrayList<Item> getItems() {
 		return items;
 	}
 
-	public void setItems(ArrayList<Item> items) {
+	public void render(final Graphics g) {
+		for (final Item i : items) {
+			i.render(g);
+		}
+	}
+
+	public void setHandler(final Handler handler) {
+		this.handler = handler;
+	}
+
+	public void setItems(final ArrayList<Item> items) {
 		this.items = items;
+	}
+
+	public void tick() {
+		final Iterator<Item> it = items.iterator();
+		while (it.hasNext()) {
+			final Item i = it.next();
+			i.tick();
+			if (i.isPickedUp()) {
+				it.remove();
+			}
+		}
 	}
 
 }

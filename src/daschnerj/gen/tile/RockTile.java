@@ -4,7 +4,7 @@ import daschnerj.gen.gfx.Assets;
 
 public class RockTile extends Tile {
 
-	public RockTile(String id) {
+	public RockTile(final String id) {
 		super(Assets.stone, id);
 	}
 

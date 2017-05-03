@@ -9,18 +9,13 @@ import daschnerj.gen.tile.Tile;
 
 public class Rock extends StaticEntity {
 
-	public Rock(Handler handler, float x, float y) {
+	public Rock(final Handler handler, final float x, final float y) {
 		super(handler, x, y, Tile.TILEWIDTH, Tile.TILEHEIGHT);
 
 		bounds.x = 3;
 		bounds.y = (int) (height / 2f);
 		bounds.width = width - 6;
-		bounds.height = (int) (height - height / 2f);
-	}
-
-	@Override
-	public void tick() {
-
+		bounds.height = (int) (height - (height / 2f));
 	}
 
 	@Override
@@ -29,9 +24,14 @@ public class Rock extends StaticEntity {
 	}
 
 	@Override
-	public void render(Graphics g) {
+	public void render(final Graphics g) {
 		g.drawImage(Assets.rock, (int) (x - handler.getGameCamera().getxOffset()),
 				(int) (y - handler.getGameCamera().getyOffset()), width, height, null);
+	}
+
+	@Override
+	public void tick() {
+
 	}
 
 }

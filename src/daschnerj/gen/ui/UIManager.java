@@ -11,53 +11,57 @@ public class UIManager {
 	private Handler handler;
 	private ArrayList<UIObject> objects;
 
-	public UIManager(Handler handler) {
+	public UIManager(final Handler handler) {
 		this.handler = handler;
-		objects = new ArrayList<UIObject>();
+		objects = new ArrayList<>();
 	}
 
-	public void tick() {
-		for (UIObject o : objects)
-			o.tick();
-	}
-
-	public void render(Graphics g) {
-		for (UIObject o : objects)
-			o.render(g);
-	}
-
-	public void onMouseMove(MouseEvent e) {
-		for (UIObject o : objects)
-			o.onMouseMove(e);
-	}
-
-	public void onMouseRelease(MouseEvent e) {
-		for (UIObject o : objects)
-			o.onMouseRelease(e);
+	public void addObject(final UIObject o) {
+		objects.add(o);
 	}
 
 	public Handler getHandler() {
 		return handler;
 	}
 
-	public void setHandler(Handler handler) {
-		this.handler = handler;
-	}
-
 	public ArrayList<UIObject> getObjects() {
 		return objects;
 	}
 
-	public void setObjects(ArrayList<UIObject> objects) {
+	public void onMouseMove(final MouseEvent e) {
+		for (final UIObject o : objects) {
+			o.onMouseMove(e);
+		}
+	}
+
+	public void onMouseRelease(final MouseEvent e) {
+		for (final UIObject o : objects) {
+			o.onMouseRelease(e);
+		}
+	}
+
+	public void removeOBject(final UIObject o) {
+		objects.remove(o);
+	}
+
+	public void render(final Graphics g) {
+		for (final UIObject o : objects) {
+			o.render(g);
+		}
+	}
+
+	public void setHandler(final Handler handler) {
+		this.handler = handler;
+	}
+
+	public void setObjects(final ArrayList<UIObject> objects) {
 		this.objects = objects;
 	}
 
-	public void addObject(UIObject o) {
-		objects.add(o);
-	}
-
-	public void removeOBject(UIObject o) {
-		objects.remove(o);
+	public void tick() {
+		for (final UIObject o : objects) {
+			o.tick();
+		}
 	}
 
 }

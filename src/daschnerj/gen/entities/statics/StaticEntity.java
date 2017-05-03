@@ -5,9 +5,9 @@ import daschnerj.gen.entities.Entity;
 
 public abstract class StaticEntity extends Entity {
 
-	public StaticEntity(Handler handler, float x, float y, int width, int height) {
+	public StaticEntity(final Handler handler, final float x, final float y, final int width, final int height) {
 		super(handler, x, y, width, height);
-		
+
 	}
 
 }

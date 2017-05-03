@@ -4,13 +4,13 @@ import java.io.File;
 import java.util.ArrayList;
 
 public interface LineFile {
-	
+
 	public File getFile();
-	
+
 	public ArrayList<String> getLines();
-	
-	public void setFile(File file);
-	
+
 	void readLines();
+
+	public void setFile(File file);
 
 }

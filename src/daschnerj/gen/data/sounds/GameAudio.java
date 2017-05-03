@@ -13,28 +13,31 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class GameAudio {
-	
-	private File file;
-	
-	public GameAudio(File file)
-	{
-		this.file = file;
-	}
-	
-	public synchronized Sound playSound(float volume, float direction) {
-		Sound sound = new Sound(file, volume, direction);
-		sound.start();
-		return sound;
-	}
-	
-	public synchronized Sound playSound(float volume, float direction, boolean loop) {
-		Sound sound = new Sound(file, volume, direction, loop);
-		sound.start();
-		return sound;
-	}
-	
-	public class Sound extends Thread{
-		
+
+	public class Sound extends Thread {
+
+		private class AudioLineListener implements LineListener {
+			Sound sound;
+
+			public AudioLineListener(final Sound sound) {
+				this.sound = sound;
+			}
+
+			@Override
+			public void update(final LineEvent event) {
+				if (event.getType().equals(LineEvent.Type.STOP))
+					if (sound.loop)
+						if (!(sound.clip.getLongFramePosition() < sound.clip.getFrameLength())) {
+							clip.setFramePosition(0);
+							System.out.println("Looped sound");
+							clip.start();
+						} else if (!(sound.clip.getLongFramePosition() < sound.clip.getFrameLength())) {
+							clip.close();
+						}
+			}
+
+		}
+
 		private AudioInputStream ais;
 		private Clip clip;
 		private long clipTime;
@@ -44,9 +47,10 @@ public class GameAudio {
 		private float setVolume;
 		private float normalDirection;
 		private FloatControl volumeController;
+
 		private FloatControl directionController;
-		
-		public Sound(File file, float volume, float balance) {
+
+		public Sound(final File file, final float volume, final float balance) {
 			try {
 				ais = AudioSystem.getAudioInputStream(file);
 				loop = false;
@@ -63,16 +67,16 @@ public class GameAudio {
 				directionController = (FloatControl) clip.getControl(FloatControl.Type.BALANCE);
 				normalDirection = directionController.getValue();
 				directionController.setValue(balance);
-			} catch (UnsupportedAudioFileException e) {
+			} catch (final UnsupportedAudioFileException e) {
 				e.printStackTrace();
-			} catch (IOException e) {
+			} catch (final IOException e) {
 				e.printStackTrace();
-			} catch (LineUnavailableException e) {
+			} catch (final LineUnavailableException e) {
 				e.printStackTrace();
 			}
 		}
-		
-		public Sound(File file, float volume, float balance, boolean loop) {
+
+		public Sound(final File file, final float volume, final float balance, final boolean loop) {
 			try {
 				ais = AudioSystem.getAudioInputStream(file);
 				this.loop = loop;
@@ -89,110 +93,102 @@ public class GameAudio {
 				directionController = (FloatControl) clip.getControl(FloatControl.Type.BALANCE);
 				normalDirection = directionController.getValue();
 				directionController.setValue(balance);
-			} catch (UnsupportedAudioFileException e) {
+			} catch (final UnsupportedAudioFileException e) {
 				e.printStackTrace();
-			} catch (IOException e) {
+			} catch (final IOException e) {
 				e.printStackTrace();
-			} catch (LineUnavailableException e) {
+			} catch (final LineUnavailableException e) {
 				e.printStackTrace();
 			}
-			
+
 		}
-		
-		public void run() {
-			clip.start();
-			clip.addLineListener(new AudioLineListener(this));
-		}
-		
-		public void pause()
-		{
-			clipTime = clip.getMicrosecondPosition();
-			clip.stop();
-		}
-		
-		public float getVolume()
-		{
-			return setVolume;
-		}
-		
-		public void setVolume(float volume)
-		{
-			setVolume = volume;
-			volumeController.setValue(Math.min(Math.max(((totalVolume*0.7f)*volume)-(Math.abs(volumeController.getMinimum())) + (0.3f*totalVolume) ,volumeController.getMinimum()),volumeController.getMaximum()));
-			if(volumeController.getValue() < -50)
-				volumeController.setValue(0);
-		}
-		
-		public void resetVolume()
-		{
-			volumeController.setValue(normalVolume);
-		}
-		
-		public float getDirection()
-		{
-			return directionController.getValue();
-		}
-		
-		public void setDirection(float direction)
-		{
-			directionController.setValue(Math.min(Math.max(direction, directionController.getMinimum()),directionController.getMaximum()));
-		}
-		
-		public void resetDirection()
-		{
-			directionController.setValue(normalDirection);
-		}
-		
-		public void end()
-		{
+
+		public void end() {
 			loop = false;
 			clip.stop();
 			clip.flush();
 			clip.close();
 		}
-		
-		public void go()
-		{
+
+		public float getDirection() {
+			return directionController.getValue();
+		}
+
+		public long getTime() {
+			if (clip.isRunning()) {
+				clipTime = clip.getMicrosecondPosition();
+			}
+			return clipTime;
+		}
+
+		public float getVolume() {
+			return setVolume;
+		}
+
+		public void go() {
 			try {
 				clip.open();
-			} catch (LineUnavailableException e) {
+			} catch (final LineUnavailableException e) {
 				e.printStackTrace();
 			}
 			clip.setMicrosecondPosition(clipTime);
 			clip.start();
 		}
-		
-		public long getTime()
-		{
-			if(clip.isRunning())
-				clipTime = clip.getMicrosecondPosition();
-			return clipTime;
+
+		public void pause() {
+			clipTime = clip.getMicrosecondPosition();
+			clip.stop();
 		}
-		
-		private class AudioLineListener implements LineListener
-		{
-			Sound sound;
-			public AudioLineListener(Sound sound)
-			{
-				this.sound = sound;
-			}
-			@Override
-			public void update(LineEvent event) {
-				if(event.getType().equals(LineEvent.Type.STOP))
-					if(sound.loop)
-						if(!(sound.clip.getLongFramePosition() < sound.clip.getFrameLength()))
-						{
-							clip.setFramePosition(0);
-							System.out.println("Looped sound");
-							clip.start();
-						}
-					else
-						if(!(sound.clip.getLongFramePosition() < sound.clip.getFrameLength()))
-							clip.close();
-			}
-			
+
+		public void resetDirection() {
+			directionController.setValue(normalDirection);
 		}
-		
+
+		public void resetVolume() {
+			volumeController.setValue(normalVolume);
+		}
+
+		@Override
+		public void run() {
+			clip.start();
+			clip.addLineListener(new AudioLineListener(this));
+		}
+
+		public void setDirection(final float direction) {
+			directionController.setValue(
+					Math.min(Math.max(direction, directionController.getMinimum()), directionController.getMaximum()));
+		}
+
+		public void setVolume(final float volume) {
+			setVolume = volume;
+			volumeController
+					.setValue(Math.min(
+							Math.max((((totalVolume * 0.7f) * volume) - (Math.abs(volumeController.getMinimum())))
+									+ (0.3f * totalVolume), volumeController.getMinimum()),
+							volumeController.getMaximum()));
+			if (volumeController.getValue() < -50) {
+				volumeController.setValue(0);
+			}
+		}
+
 	}
-	
+
+	private final File file;
+
+	public GameAudio(final File file) {
+		this.file = file;
+	}
+
+	public synchronized Sound playSound(final float volume, final float direction) {
+		final Sound sound = new Sound(file, volume, direction);
+		sound.start();
+		return sound;
+	}
+
+	public synchronized Sound playSound(final float volume, final float direction, final boolean loop) {
+		final Sound sound = new Sound(file, volume, direction, loop);
+		sound.start();
+		return sound;
+	}
+
 }

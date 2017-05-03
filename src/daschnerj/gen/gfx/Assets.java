@@ -13,7 +13,7 @@ import daschnerj.gen.utils.Utils;
 public class Assets {
 
 	private static final int width = 32, height = 32;
-	
+
 	public static Data data;
 	public static Font font28;
 
@@ -26,52 +26,42 @@ public class Assets {
 
 	public static void init() {
 		data = new Data();
-		File file = new File(Utils.getDirectory() + "\\Gen\\Audio\\windy.wav");
+		final File file = new File(Utils.getDirectory() + "\\Gen\\Audio\\windy.wav");
 		System.out.println("Exists: " + file.exists());
-		GameAudio audio = new GameAudio(file);
-		Sound sound = audio.playSound(1f, 0f, true);
-		new Thread()
-		{
+		final GameAudio audio = new GameAudio(file);
+		final Sound sound = audio.playSound(1f, 0f, true);
+		new Thread() {
 			boolean isRightward = true;
-			public void run()
-			{
-				while(true)
-				{
+
+			@Override
+			public void run() {
+				while (true) {
 					try {
 						Thread.sleep(2);
-					} catch (InterruptedException e) {
+					} catch (final InterruptedException e) {
 						e.printStackTrace();
 					}
-					if(isRightward)
-					{
-						if(sound.getDirection() >= 1.0f)
-						{
+					if (isRightward) {
+						if (sound.getDirection() >= 1.0f) {
 							isRightward = false;
 							sound.setDirection(sound.getDirection() + 0.0001f);
-						}
-						else
-						{
+						} else {
 							sound.setDirection(sound.getDirection() + 0.0001f);
 						}
-					}
-					else
-					{
-						if(sound.getDirection() <= -1.0f)
-						{
+					} else {
+						if (sound.getDirection() <= -1.0f) {
 							isRightward = true;
 							sound.setDirection(sound.getDirection() - 0.0001f);
-						}
-						else
-						{
+						} else {
 							sound.setDirection(sound.getDirection() - 0.0001f);
 						}
 					}
 				}
 			}
 		}.start();
-		
+
 		font28 = DataObjects.fonts.get("slkscr").loadFont(28);
-		SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("Gen\\Textures", "sheet.png"));
+		final SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("Gen\\Textures", "sheet.png"));
 
 		inventoryScreen = ImageLoader.loadImage("Gen\\Textures", "inventoryScreen.png");
 

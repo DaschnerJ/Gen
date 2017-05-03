@@ -6,26 +6,24 @@ import java.io.File;
 import java.io.IOException;
 
 public class GameFont {
-	
-	private String name;
-	private File file;
-	
-	public GameFont(String name, File file)
-	{
-		this.file = file;
-		this.name = name;
-	}
-	
-	public GameFont(File file)
-	{
+
+	private final String name;
+	private final File file;
+
+	public GameFont(final File file) {
 		this.file = file;
 		this.name = file.getName();
 	}
-	
-	public Font loadFont(float size) {
-		return loadFont().deriveFont(Font.PLAIN, size);
+
+	public GameFont(final String name, final File file) {
+		this.file = file;
+		this.name = name;
 	}
-	
+
+	public String getName() {
+		return name;
+	}
+
 	private Font loadFont() {
 		try {
 			return Font.createFont(Font.TRUETYPE_FONT, file);
@@ -34,10 +32,9 @@ public class GameFont {
 		}
 		return null;
 	}
-	
-	public String getName()
-	{
-		return name;
+
+	public Font loadFont(final float size) {
+		return loadFont().deriveFont(Font.PLAIN, size);
 	}
 
 }

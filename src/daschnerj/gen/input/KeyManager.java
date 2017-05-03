@@ -6,7 +6,7 @@ import java.awt.event.KeyListener;
 public class KeyManager implements KeyListener {
 
 	// Array of keys on keyboard whether they are receiving input or not.
-	private boolean[] keys, justPressed, cantPress;
+	private final boolean[] keys, justPressed, cantPress;
 
 	public boolean up, down, left, right;
 
@@ -16,6 +16,36 @@ public class KeyManager implements KeyListener {
 		keys = new boolean[256];
 		justPressed = new boolean[keys.length];
 		cantPress = new boolean[keys.length];
+	}
+
+	public boolean keyJustPressed(final int keyCode) {
+		if ((keyCode < 0) || (keyCode >= keys.length))
+			return false;
+		return justPressed[keyCode];
+	}
+
+	@Override
+	public void keyPressed(final KeyEvent e) {
+
+		if ((e.getKeyCode() < 0) || (e.getKeyCode() >= keys.length))
+			return;
+		// If the key was pressed then it turns to true.
+		keys[e.getKeyCode()] = true;
+		System.out.println("Pressed!");
+	}
+
+	@Override
+	public void keyReleased(final KeyEvent e) {
+
+		if ((e.getKeyCode() < 0) || (e.getKeyCode() >= keys.length))
+			return;
+		// If the key was released then it turns to false.
+		keys[e.getKeyCode()] = false;
+	}
+
+	@Override
+	public void keyTyped(final KeyEvent e) {
+
 	}
 
 	public void tick() {
@@ -40,36 +70,6 @@ public class KeyManager implements KeyListener {
 		aDown = keys[KeyEvent.VK_DOWN];
 		aLeft = keys[KeyEvent.VK_LEFT];
 		aRight = keys[KeyEvent.VK_RIGHT];
-	}
-
-	@Override
-	public void keyPressed(KeyEvent e) {
-
-		if (e.getKeyCode() < 0 || e.getKeyCode() >= keys.length)
-			return;
-		// If the key was pressed then it turns to true.
-		keys[e.getKeyCode()] = true;
-		System.out.println("Pressed!");
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-
-		if (e.getKeyCode() < 0 || e.getKeyCode() >= keys.length)
-			return;
-		// If the key was released then it turns to false.
-		keys[e.getKeyCode()] = false;
-	}
-
-	@Override
-	public void keyTyped(KeyEvent e) {
-
-	}
-
-	public boolean keyJustPressed(int keyCode) {
-		if (keyCode < 0 || keyCode >= keys.length)
-			return false;
-		return justPressed[keyCode];
 	}
 
 }

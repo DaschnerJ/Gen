@@ -8,19 +8,24 @@ import daschnerj.gen.worlds.World;
 public class Handler {
 
 	/**
-	 * Handler contains basic functions to get and set values within the over all game.
+	 * Handler contains basic functions to get and set values within the over
+	 * all game.
 	 */
 	private Game game;
 	private World world;
 
-	public Handler(Game game) {
+	public Handler(final Game game) {
 
 		this.game = game;
 
 	}
 
-	public int getWidth() {
-		return game.getWidth();
+	public Game getGame() {
+		return game;
+	}
+
+	public GameCamera getGameCamera() {
+		return game.getGameCamera();
 	}
 
 	public int getHeight() {
@@ -35,23 +40,19 @@ public class Handler {
 		return game.getMouseManager();
 	}
 
-	public GameCamera getGameCamera() {
-		return game.getGameCamera();
-	}
-
-	public Game getGame() {
-		return game;
-	}
-
-	public void setGame(Game game) {
-		this.game = game;
+	public int getWidth() {
+		return game.getWidth();
 	}
 
 	public World getWorld() {
 		return world;
 	}
 
-	public void setWorld(World world) {
+	public void setGame(final Game game) {
+		this.game = game;
+	}
+
+	public void setWorld(final World world) {
 		this.world = world;
 	}
 

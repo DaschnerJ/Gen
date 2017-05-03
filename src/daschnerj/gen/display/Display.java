@@ -14,13 +14,13 @@ public class Display {
 	private Canvas canvas;
 
 	// Title of frame.
-	private String title;
+	private final String title;
 
 	// The width and height of the game window.
-	private int width, height;
+	private final int width, height;
 
 	// Constructor for the display
-	public Display(String title, int width, int height) {
+	public Display(final String title, final int width, final int height) {
 		this.title = title;
 		this.width = width;
 		this.height = height;
@@ -65,7 +65,7 @@ public class Display {
 
 	/**
 	 * Returns the canvas to draw to.
-	 * 
+	 *
 	 * @return
 	 */
 	public Canvas getCanvas() {

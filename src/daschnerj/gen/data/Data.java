@@ -13,31 +13,22 @@ import daschnerj.gen.utils.Utils;
 
 public class Data implements IData {
 
-	public ArrayList<File> files = new ArrayList<File>();
+	public ArrayList<File> files = new ArrayList<>();
 
 	public Data() {
 		loadData();
 	}
 
-	/**
-	 * Gets all the data and loads them.
-	 */
-	private void loadData() {
-		files = getAllFiles(Utils.getDirectory() +"\\Gen\\");
-		loadAllFiles();
-
-	}
-
 	@Override
-	public ArrayList<File> getAllFiles(String path) {
+	public ArrayList<File> getAllFiles(final String path) {
 		// .............list file
-		File directory = new File(path);
+		final File directory = new File(path);
 
-		ArrayList<File> rList = new ArrayList<File>();
+		final ArrayList<File> rList = new ArrayList<>();
 		// get all the files from a directory
-		File[] fList = directory.listFiles();
+		final File[] fList = directory.listFiles();
 
-		for (File file : fList) {
+		for (final File file : fList) {
 			if (file.isFile()) {
 				rList.add(file);
 			} else if (file.isDirectory()) {
@@ -48,10 +39,21 @@ public class Data implements IData {
 	}
 
 	@Override
+	public String getFileEnding(final File file) {
+		final String[] a = file.getName().split("\\.");
+		return a[a.length - 1];
+	}
+
+	private String getFileName(final File f) {
+		final String[] s = f.getName().split("\\.");
+		return s[0];
+	}
+
+	@Override
 	public void loadAllFiles() {
-		for (File f : files) {
-			String s = getFileEnding(f);
-			String n = getFileName(f);
+		for (final File f : files) {
+			final String s = getFileEnding(f);
+			final String n = getFileName(f);
 			switch (s) {
 			case "png":
 				DataObjects.textures.put(n, new Texture(f));
@@ -82,16 +84,13 @@ public class Data implements IData {
 
 	}
 
-	@Override
-	public String getFileEnding(File file) {
-		String[] a = file.getName().split("\\.");
-		return a[a.length - 1];
-	}
-	
-	private String getFileName(File f)
-	{
-		String[] s = f.getName().split("\\.");
-		return s[0];
+	/**
+	 * Gets all the data and loads them.
+	 */
+	private void loadData() {
+		files = getAllFiles(Utils.getDirectory() + "\\Gen\\");
+		loadAllFiles();
+
 	}
 
 }
