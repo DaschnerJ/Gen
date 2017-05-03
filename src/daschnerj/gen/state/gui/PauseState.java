@@ -1,8 +1,9 @@
-package daschnerj.gen.state;
+package daschnerj.gen.state.gui;
 
 import java.awt.Graphics;
 
 import daschnerj.gen.Handler;
+import daschnerj.gen.state.State;
 
 public class PauseState extends State {
 

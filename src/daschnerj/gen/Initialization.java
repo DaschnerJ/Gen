@@ -5,8 +5,8 @@ import daschnerj.gen.display.Display;
 import daschnerj.gen.gfx.Assets;
 import daschnerj.gen.gfx.GameCamera;
 import daschnerj.gen.state.GameState;
-import daschnerj.gen.state.MenuState;
 import daschnerj.gen.state.State;
+import daschnerj.gen.state.gui.MenuState;
 import daschnerj.gen.utils.Utils;
 
 public class Initialization {

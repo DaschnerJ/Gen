@@ -1,10 +1,12 @@
-package daschnerj.gen.state;
+package daschnerj.gen.state.gui;
 
 import java.awt.Graphics;
 
 import daschnerj.gen.Handler;
 import daschnerj.gen.gfx.Assets;
+import daschnerj.gen.state.State;
 import daschnerj.gen.ui.UIImageButton;
+import daschnerj.gen.ui.UILayout;
 import daschnerj.gen.ui.UIManager;
 
 public class MenuState extends State {
@@ -35,6 +37,10 @@ public class MenuState extends State {
 			handler.getMouseManager().setUIManager(null);
 			State.setState(handler.getGame().gameState);
 		}));
+		
+		UILayout uL = new UILayout(uiManager);
+		uL.centerHorizontalLayout();
+		uL.centerVerticalLayout(10);
 	}
 
 	@Override
