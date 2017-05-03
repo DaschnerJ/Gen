@@ -7,13 +7,14 @@ import java.io.File;
 import daschnerj.gen.data.Data;
 import daschnerj.gen.data.DataObjects;
 import daschnerj.gen.data.sounds.GameAudio;
-import daschnerj.gen.data.sounds.GameAudio.Sound;
+import daschnerj.gen.data.sounds.GameAudio.LocationSound;
+import daschnerj.gen.data.sounds.SoundVector;
 import daschnerj.gen.utils.Utils;
 
 public class Assets {
 
 	private static final int width = 32, height = 32;
-
+	
 	public static Data data;
 	public static Font font28;
 
@@ -26,42 +27,55 @@ public class Assets {
 
 	public static void init() {
 		data = new Data();
-		final File file = new File(Utils.getDirectory() + "\\Gen\\Audio\\windy.wav");
+		File file = new File(Utils.getDirectory() + "\\Gen\\Audio\\windy.wav");
 		System.out.println("Exists: " + file.exists());
-		final GameAudio audio = new GameAudio(file);
-		final Sound sound = audio.playSound(1f, 0f, true);
-		new Thread() {
+		GameAudio audio = new GameAudio(file);
+		LocationSound sound = audio.playLocationSound(1f, 0f, true, new SoundVector(0,0.5f), new SoundVector(0,0), 1);
+		new Thread()
+		{
+			float x;
 			boolean isRightward = true;
-
-			@Override
-			public void run() {
-				while (true) {
+			public void run()
+			{
+				while(true)
+				{
 					try {
 						Thread.sleep(2);
-					} catch (final InterruptedException e) {
+					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
-					if (isRightward) {
-						if (sound.getDirection() >= 1.0f) {
+					if(isRightward)
+					{
+						if(x >= 1.0f)
+						{
 							isRightward = false;
-							sound.setDirection(sound.getDirection() + 0.0001f);
-						} else {
-							sound.setDirection(sound.getDirection() + 0.0001f);
+							x += 0.0001f;
 						}
-					} else {
-						if (sound.getDirection() <= -1.0f) {
-							isRightward = true;
-							sound.setDirection(sound.getDirection() - 0.0001f);
-						} else {
-							sound.setDirection(sound.getDirection() - 0.0001f);
+						else
+						{
+							x += 0.0001f;
 						}
 					}
+					else
+					{
+						if(x <= -1.0f)
+						{
+							isRightward = true;
+							x -= 0.0001f;
+						}
+						else
+						{
+							x -= 0.0001f;
+						}
+					}
+					sound.setLocation(new SoundVector(x,0.5f));
+					sound.adjustSoundToListener(new SoundVector(0,0));
 				}
 			}
 		}.start();
-
+		
 		font28 = DataObjects.fonts.get("slkscr").loadFont(28);
-		final SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("Gen\\Textures", "sheet.png"));
+		SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("Gen\\Textures", "sheet.png"));
 
 		inventoryScreen = ImageLoader.loadImage("Gen\\Textures", "inventoryScreen.png");
 
