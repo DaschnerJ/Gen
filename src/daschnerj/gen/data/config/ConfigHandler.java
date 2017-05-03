@@ -32,7 +32,7 @@ public class ConfigHandler {
 
 	/**
 	 * Find all files within the given path.
-	 * 
+	 *
 	 * @param pathname
 	 *            The path to look for config files.
 	 */

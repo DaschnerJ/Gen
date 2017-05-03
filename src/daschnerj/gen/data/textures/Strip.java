@@ -20,7 +20,7 @@ public class Strip {
 
 	/**
 	 * If 0 is returned then the image is tall, otherwise the image is wide.
-	 * 
+	 *
 	 * @param a
 	 *            Width.
 	 * @param b

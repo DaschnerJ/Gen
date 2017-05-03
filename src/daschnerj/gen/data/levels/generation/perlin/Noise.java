@@ -14,7 +14,7 @@ public class Noise {
 
 	/**
 	 * Generate a noise source based upon the midpoint displacement fractal.
-	 * 
+	 *
 	 * @param rand
 	 *            The random number generator
 	 * @param roughness
@@ -100,7 +100,7 @@ public class Noise {
 
 	/**
 	 * Convert to a Boolean array
-	 * 
+	 *
 	 * @return the boolean array
 	 */
 	public boolean[][] toBooleans() {

@@ -18,7 +18,7 @@ public class Initialization {
 
 	/**
 	 * Initializes the game.
-	 * 
+	 *
 	 * @param game
 	 */
 	public Initialization(final Game game) {
@@ -122,12 +122,12 @@ public class Initialization {
 	/**
 	 * private void exportResources() { System.out.println("Exporting
 	 * resources..."); try {
-	 * 
+	 *
 	 * Utils.exportResource("/slkscr.ttf", "\\gen\\resources\\fonts");
 	 * Utils.exportResource("/inventoryScreen.png",
 	 * "\\gen\\resources\\textures\\interface");
 	 * Utils.exportResource("/sheet.png", "\\gen\\resources\\textures\\tiles");
-	 * 
+	 *
 	 * } catch (Exception e) { // TODO Auto-generated catch block
 	 * e.printStackTrace(); } }
 	 */

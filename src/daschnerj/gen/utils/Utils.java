@@ -78,9 +78,9 @@ public class Utils {
 	 * /** Export a resource embedded into a Jar file to the local file path.
 	 *
 	 * @param resourceName ie.: "/SmartLibrary.dll"
-	 * 
+	 *
 	 * @return The path to the exported resource
-	 * 
+	 *
 	 * @throws Exception
 	 *
 	 * static public String ExportResource(String resourceName, String path)
@@ -90,7 +90,7 @@ public class Utils {
 	 * directory down in the "jar tree" been the jar the root of the tree
 	 * if(stream == null) { throw new Exception("Cannot get resource \"" +
 	 * resourceName + "\" from Jar file."); }
-	 * 
+	 *
 	 * int readBytes; byte[] buffer = new byte[4096]; jarFolder = new
 	 * File(Utils.class.getProtectionDomain().getCodeSource().getLocation().
 	 * toURI().getPath()).getParentFile().getPath().replace('\\', '/');
@@ -98,16 +98,16 @@ public class Utils {
 	 * resourceName); while ((readBytes = stream.read(buffer)) > 0) {
 	 * resStreamOut.write(buffer, 0, readBytes); } } catch (Exception ex) {
 	 * throw ex; } finally { stream.close(); resStreamOut.close(); }
-	 * 
+	 *
 	 * return jarFolder + resourceName; }
-	 * 
+	 *
 	 * public static void exportResource(String resourceName, String path) {
 	 * File f = new File(System.getProperty("java.class.path")); File dir2 =
 	 * f.getAbsoluteFile().getParentFile(); String path2 = dir2.toString(); URL
 	 * url = Initialization.class.getResource(resourceName); try { File dir =
 	 * new File(url.getPath().replaceFirst("/", "").replaceAll("%20",
 	 * " ").replaceFirst("file:","")); String[] preDir = path2.split(";");
-	 * 
+	 *
 	 * String des = path +"\\"+ dir.getName(); if(preDir.length > 1) des =
 	 * preDir[1] + des; else des = preDir[0]; File outDes = new File(des);
 	 * Files.copy(dir.toPath(), outDes.toPath(),
@@ -140,7 +140,7 @@ public class Utils {
 
 	/**
 	 * Loads a file in a List line by line.
-	 * 
+	 *
 	 * @param path
 	 *            Path to the file from the jar folder.
 	 * @param name

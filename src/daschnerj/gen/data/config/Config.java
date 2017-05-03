@@ -18,7 +18,7 @@ public class Config extends Lines {
 	/**
 	 * Allows programmatically set an attribute to the list, note it is not
 	 * saved.
-	 * 
+	 *
 	 * @param a
 	 *            The attribute desired to be added.
 	 * @param b
@@ -30,7 +30,7 @@ public class Config extends Lines {
 
 	/**
 	 * Allows programmatically get an attribute from the configuration file.
-	 * 
+	 *
 	 * @param a
 	 *            The attribute desired.
 	 * @return The string value of an attribute.
