@@ -1,6 +1,7 @@
 package daschnerj.gen.ui;
 
 import java.awt.Graphics;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
@@ -37,6 +38,18 @@ public class UIManager {
 	public void onMouseRelease(final MouseEvent e) {
 		for (final UIObject o : objects) {
 			o.onMouseRelease(e);
+		}
+	}
+	
+	public void onKeyRelease(final KeyEvent e)
+	{
+		for(final UIObject o : objects)
+		{
+			if(o.isActive())
+			{
+				o.onKeyPress(e);
+				o.render(handler.getGame().getG());
+			}
 		}
 	}
 

@@ -3,7 +3,6 @@ package daschnerj.gen.state;
 import java.awt.Graphics;
 
 import daschnerj.gen.Handler;
-import daschnerj.gen.ui.UIManager;
 
 public abstract class State {
 

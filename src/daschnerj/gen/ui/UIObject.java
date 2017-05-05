@@ -2,6 +2,7 @@ package daschnerj.gen.ui;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
 public abstract class UIObject {
@@ -10,6 +11,7 @@ public abstract class UIObject {
 	protected int width, height;
 	protected Rectangle bounds;
 	protected boolean hovering = false;
+	protected boolean active = false;
 
 	public UIObject(final float x, final float y, final int width, final int height) {
 		this.x = x;
@@ -44,10 +46,17 @@ public abstract class UIObject {
 	public boolean isHovering() {
 		return hovering;
 	}
+	
+	public boolean isActive()
+	{
+		return active;
+	}
 
 	// GETTERS AND SETTERS
 
 	public abstract void onClick();
+	
+	public abstract void onType(KeyEvent e);
 
 	public void onMouseMove(final MouseEvent e) {
 		if (bounds.contains(e.getX(), e.getY())) {
@@ -55,6 +64,17 @@ public abstract class UIObject {
 		} else {
 			hovering = false;
 		}
+	}
+	
+	public void onKeyPress(final KeyEvent e)
+	{
+		if(active)
+			onType(e);
+	}
+	
+	public void setActive(boolean b)
+	{
+		active = b;
 	}
 
 	public void onMouseRelease(final MouseEvent e) {

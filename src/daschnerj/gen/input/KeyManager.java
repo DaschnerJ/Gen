@@ -3,6 +3,8 @@ package daschnerj.gen.input;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import daschnerj.gen.ui.UIManager;
+
 public class KeyManager implements KeyListener {
 
 	// Array of keys on keyboard whether they are receiving input or not.
@@ -11,6 +13,8 @@ public class KeyManager implements KeyListener {
 	public boolean up, down, left, right;
 
 	public boolean aUp, aDown, aLeft, aRight;
+	
+	private UIManager uiManager;
 
 	public KeyManager() {
 		keys = new boolean[256];
@@ -41,6 +45,14 @@ public class KeyManager implements KeyListener {
 			return;
 		// If the key was released then it turns to false.
 		keys[e.getKeyCode()] = false;
+		
+		if(uiManager != null)
+			uiManager.onKeyRelease(e);
+	}
+	
+	public void setUIManager(UIManager uiManager)
+	{
+		this.uiManager = uiManager;
 	}
 
 	@Override

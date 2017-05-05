@@ -1,6 +1,7 @@
 package daschnerj.gen.ui;
 
 import java.awt.Graphics;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
 public class UIImageButton extends UIObject {
@@ -40,6 +41,12 @@ public class UIImageButton extends UIObject {
 	@Override
 	public void tick() {
 
+	}
+
+	@Override
+	public void onType(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
