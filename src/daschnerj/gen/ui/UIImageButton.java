@@ -14,6 +14,13 @@ public class UIImageButton extends UIObject {
 		this.images = images;
 		this.clicker = clicker;
 	}
+	
+	public UIImageButton(final float x, final float y, final int width, final int height, final BufferedImage image,
+			final ClickListener clicker) {
+		super(x, y, width, height);
+		this.images = new BufferedImage[]{image, image};
+		this.clicker = clicker;
+	}
 
 	@Override
 	public void onClick() {

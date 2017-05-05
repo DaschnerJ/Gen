@@ -5,9 +5,9 @@ import java.awt.Graphics;
 import daschnerj.gen.Handler;
 import daschnerj.gen.state.State;
 
-public class LoadState extends State{
+public class AboutState extends State {
 
-	public LoadState(Handler handler) {
+	public AboutState(Handler handler) {
 		super(handler);
 		// TODO Auto-generated constructor stub
 	}
@@ -15,13 +15,13 @@ public class LoadState extends State{
 	@Override
 	public void render(Graphics g) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void tick() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

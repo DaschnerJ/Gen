@@ -5,9 +5,9 @@ import java.awt.Graphics;
 import daschnerj.gen.Handler;
 import daschnerj.gen.state.State;
 
-public class LoadState extends State{
+public class CreateState extends State{
 
-	public LoadState(Handler handler) {
+	public CreateState(Handler handler) {
 		super(handler);
 		// TODO Auto-generated constructor stub
 	}

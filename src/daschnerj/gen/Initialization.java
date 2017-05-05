@@ -6,7 +6,13 @@ import daschnerj.gen.gfx.Assets;
 import daschnerj.gen.gfx.GameCamera;
 import daschnerj.gen.state.GameState;
 import daschnerj.gen.state.State;
+import daschnerj.gen.state.gui.AboutState;
+import daschnerj.gen.state.gui.CreateState;
+import daschnerj.gen.state.gui.LoadState;
 import daschnerj.gen.state.gui.MenuState;
+import daschnerj.gen.state.gui.OptionsState;
+import daschnerj.gen.state.gui.PauseState;
+import daschnerj.gen.state.gui.SaveState;
 import daschnerj.gen.utils.Utils;
 
 public class Initialization {
@@ -33,6 +39,12 @@ public class Initialization {
 		// Create new game state.
 		game.setGameState(new GameState(game.getHandler()));
 		game.setMenuState(new MenuState(game.getHandler()));
+		game.setAboutState(new AboutState(game.getHandler()));
+		game.setCreateState(new CreateState(game.getHandler()));
+		game.setLoadState(new LoadState(game.getHandler()));
+		game.setOptionsState(new OptionsState(game.getHandler()));
+		game.setPauseState(new PauseState(game.getHandler()));
+		game.setSaveState(new SaveState(game.getHandler()));
 		// Sets the current game state.
 		State.setState(game.getMenuState());
 	}

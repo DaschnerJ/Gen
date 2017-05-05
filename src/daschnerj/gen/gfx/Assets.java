@@ -73,8 +73,8 @@ public class Assets {
 		wood = sheet.crop(width, height, width, height);
 
 		btn_start = new BufferedImage[2];
-		btn_start[0] = sheet.crop(width * 6, height * 4, width * 2, height);
-		btn_start[1] = sheet.crop(width * 6, height * 5, width * 2, height);
+		btn_start[0] = DataObjects.textures.get("button_create-new-world").getImage();
+		btn_start[1] = DataObjects.textures.get("button_create-new-world").getImage();
 
 		player_down = new BufferedImage[2];
 		player_up = new BufferedImage[2];

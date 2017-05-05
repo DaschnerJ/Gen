@@ -19,6 +19,11 @@ public abstract class UIObject {
 		bounds = new Rectangle((int) x, (int) y, width, height);
 
 	}
+	
+	public void setBounds(float x, float y, int width, int height)
+	{
+		bounds = new Rectangle((int) x, (int) y, width, height);
+	}
 
 	public int getHeight() {
 		return height;
@@ -62,6 +67,7 @@ public abstract class UIObject {
 
 	public void setHeight(final int height) {
 		this.height = height;
+		setBounds(x, y, this.width, this.height);
 	}
 
 	public void setHovering(final boolean hovering) {
@@ -70,14 +76,17 @@ public abstract class UIObject {
 
 	public void setWidth(final int width) {
 		this.width = width;
+		setBounds(x, y, this.width, this.height);
 	}
 
 	public void setX(final float x) {
 		this.x = x;
+		setBounds(x, y, this.width, this.height);
 	}
 
 	public void setY(final float y) {
 		this.y = y;
+		setBounds(x, y, this.width, this.height);
 	}
 
 	public abstract void tick();

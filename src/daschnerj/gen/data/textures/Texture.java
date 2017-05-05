@@ -26,8 +26,9 @@ public class Texture {
 		BufferedImage image = null;
 		try {
 			image = ImageIO.read(file);
-		} catch (final IOException e) {
 			this.image = image;
+		} catch (final IOException e) {
+			
 		}
 	}
 

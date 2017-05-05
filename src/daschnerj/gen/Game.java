@@ -37,6 +37,12 @@ public class Game implements Runnable {
 	// States.
 	public State gameState;
 	public State menuState;
+	public State createState;
+	public State aboutState;
+	public State pauseState;
+	public State saveState;
+	public State optionsState;
+	public State loadState;
 
 	// Input
 	private KeyManager keyManager;
@@ -155,7 +161,6 @@ public class Game implements Runnable {
 		// if there is no state.
 		if (State.getState() != null) {
 			State.getState().render(g);
-			;
 		}
 
 		// End Drawing.
@@ -253,6 +258,54 @@ public class Game implements Runnable {
 
 	public void setMenuState(final State menuState) {
 		this.menuState = menuState;
+	}
+	
+	public State getCreateState() {
+		return createState;
+	}
+
+	public void setCreateState(State createState) {
+		this.createState = createState;
+	}
+
+	public State getAboutState() {
+		return aboutState;
+	}
+
+	public void setAboutState(State aboutState) {
+		this.aboutState = aboutState;
+	}
+
+	public State getPauseState() {
+		return pauseState;
+	}
+
+	public void setPauseState(State pauseState) {
+		this.pauseState = pauseState;
+	}
+
+	public State getSaveState() {
+		return saveState;
+	}
+
+	public void setSaveState(State saveState) {
+		this.saveState = saveState;
+	}
+
+	public State getOptionsState() {
+		return optionsState;
+	}
+
+	public void setOptionsState(State optionsState) {
+		this.optionsState = optionsState;
+	}
+
+	public State getLoadState() {
+		return loadState;
+	}
+
+	public void setLoadState(State loadState) {
+		this.loadState = loadState;
 	}
 
 	public void setMouseManager(final MouseManager mouseManager) {
