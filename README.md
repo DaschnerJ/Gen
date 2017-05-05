@@ -34,10 +34,8 @@ A gwf file is a world save specific to Gen.
 
 ### Current To-Do List
 - Animations Strips
-- Audio
 - Lighting
 - Defining Types
-- World Generation
 - Ability to Place/Destroy/Change Tile States
 - World Loading
 - World Saving
@@ -51,6 +49,8 @@ A gwf file is a world save specific to Gen.
 - Add to Steam 
 
 ### Working On
+- World Generation
+- Audio
 - Loading Resources (How to load and save world files/objects)
 - Saving Resources
 - GUI/Menus
