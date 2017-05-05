@@ -24,4 +24,10 @@ public class SaveState extends State{
 		
 	}
 
+	@Override
+	public void setUIManager() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

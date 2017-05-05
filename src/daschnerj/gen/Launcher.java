@@ -7,7 +7,7 @@ public class Launcher {
 	public static void main(final String[] args) {
 
 		// Create the game.
-		final Game game = new Game("Gen!", 600, 600);
+		final Game game = new Game("Gen!", 800, 800);
 		// Start the game loop.
 		game.start();
 		new MapGen();

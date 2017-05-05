@@ -24,4 +24,10 @@ public class LoadState extends State{
 		
 	}
 
+	@Override
+	public void setUIManager() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

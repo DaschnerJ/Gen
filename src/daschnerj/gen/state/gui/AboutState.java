@@ -4,6 +4,7 @@ import java.awt.Graphics;
 
 import daschnerj.gen.Handler;
 import daschnerj.gen.state.State;
+import daschnerj.gen.ui.UIManager;
 
 public class AboutState extends State {
 
@@ -23,5 +24,12 @@ public class AboutState extends State {
 		// TODO Auto-generated method stub
 
 	}
+
+	@Override
+	public void setUIManager() {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

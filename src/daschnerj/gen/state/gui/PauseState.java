@@ -23,4 +23,10 @@ public class PauseState extends State {
 
 	}
 
+	@Override
+	public void setUIManager() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

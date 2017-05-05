@@ -11,35 +11,50 @@ import daschnerj.gen.state.State;
 import daschnerj.gen.ui.UIImageButton;
 import daschnerj.gen.ui.UILayout;
 import daschnerj.gen.ui.UIManager;
+import daschnerj.gen.utils.Utils;
 
 public class MenuState extends State {
 
-	private final BufferedImage img;
+	private BufferedImage img;
 	private int centerX, centerY;
 	private final UIManager uiManager;
 
 	public MenuState(final Handler handler) {
 		super(handler);
+		
 		img = DataObjects.textures.get("MainMenu").getImage();
+		img = Utils.resizeImage(img, handler.getWidth(), handler.getHeight());
+		
 		Dimension dim = handler.getGame().getDisplay().getCanvas().getSize();
 		centerX = ((int)dim.getWidth() - img.getWidth())/2;
 		centerY = ((int)dim.getHeight() - img.getHeight())/2;
+		
 		uiManager = new UIManager(handler);
-		handler.getMouseManager().setUIManager(uiManager);
-		System.out.println("Does hashmap contain: " + DataObjects.textures.get("button_create-new-world").toString());
+		setUIManager();
+		
+				
 		uiManager.addObject(new UIImageButton(200, 50, 256, 46, DataObjects.textures.get("button_create-new-world").getImage(), () -> {
 			handler.getMouseManager().setUIManager(null);
 			State.setState(handler.getGame().createState);
+			handler.getGame().createState.setUIManager();
 		}));
 
 		uiManager.addObject(new UIImageButton(200, 50, 256, 46, DataObjects.textures.get("button_load").getImage(), () -> {
 			handler.getMouseManager().setUIManager(null);
 			State.setState(handler.getGame().loadState);
+			handler.getGame().loadState.setUIManager();
+		}));
+		
+		uiManager.addObject(new UIImageButton(200, 350, 256, 46, DataObjects.textures.get("button_options").getImage(), () -> {
+			handler.getMouseManager().setUIManager(null);
+			State.setState(handler.getGame().optionsState);
+			handler.getGame().optionsState.setUIManager();
 		}));
 
-		uiManager.addObject(new UIImageButton(200, 350, 256, 46, DataObjects.textures.get("button_about").getImage(), () -> {
+		uiManager.addObject(new UIImageButton(200, 350, 256, 46, DataObjects.textures.get("button_credits").getImage(), () -> {
 			handler.getMouseManager().setUIManager(null);
 			State.setState(handler.getGame().aboutState);
+			handler.getGame().aboutState.setUIManager();
 		}));
 
 		uiManager.addObject(new UIImageButton(200, 600, 256, 46, DataObjects.textures.get("button_exit").getImage(), () -> {
@@ -68,6 +83,12 @@ public class MenuState extends State {
 	@Override
 	public void tick() {
 		uiManager.tick();
+	}
+
+	@Override
+	public void setUIManager() {
+		handler.getMouseManager().setUIManager(uiManager);
+		
 	}
 
 }
