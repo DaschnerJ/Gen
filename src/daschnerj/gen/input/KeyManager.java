@@ -31,7 +31,7 @@ public class KeyManager implements KeyListener {
 			return;
 		// If the key was pressed then it turns to true.
 		keys[e.getKeyCode()] = true;
-		System.out.println("Pressed!");
+		//System.out.println("Pressed!");
 	}
 
 	@Override

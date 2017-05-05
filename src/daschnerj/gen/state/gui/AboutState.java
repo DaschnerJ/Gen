@@ -4,7 +4,6 @@ import java.awt.Graphics;
 
 import daschnerj.gen.Handler;
 import daschnerj.gen.state.State;
-import daschnerj.gen.ui.UIManager;
 
 public class AboutState extends State {
 
